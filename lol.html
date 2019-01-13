@@ -13,6 +13,8 @@
 		function main() {
 			dictionary = {};
 			searchmovie(dictionary);
+
+
 		}
 		function searchmovie(dictionary){
 			var settings = {
@@ -29,12 +31,61 @@
 
 				dictionary["id"]=response.results[0].id;
 				dictionary["title"] = response.results[0].title;
-				dictionary["posterurl"] = "http://image.tmdb.org/t/p/w500/" + response.results[0].poster_path;
+				dictionary["poster_url"] = "http://image.tmdb.org/t/p/w500/" + response.results[0].poster_path;
 				dictionary["language"] = response.results[0].original_language;
 				dictionary["rating"] = response.results[0].vote_average;
-				dictionary["releasedate"] = response.results[0].release_date;
+				dictionary["release_date"] = response.results[0].release_date;
 				dictionary["summary"] = response.results[0].overview;
-				console.log(dictionary);
+
+				getKeywords(dictionary)
+
+
+			});
+		}
+		function getKeywords(dictionary){
+
+			var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.themoviedb.org/3/movie/"+dictionary["id"]+"/keywords?api_key=07a7c9c75d334aae16ed5f47c759aa7e",
+				"method": "GET",
+				"headers": {},
+				"data": "{}"
+			}
+
+			$.ajax(settings).done(function (response) {
+
+				dictionary["tags"] = [];
+				for (i = 0; i < response.keywords.length; i++) {
+					dictionary["tags"].push(response.keywords[i].name);
+				}
+
+
+				getrelease(dictionary);
+			});
+		}
+		function getrelease(dictionary){
+
+
+
+			var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.themoviedb.org/3/movie/"+dictionary["id"]+"/release_dates?api_key=07a7c9c75d334aae16ed5f47c759aa7e",
+				"method": "GET",
+				"headers": {},
+				"data": "{}"
+				}
+
+			$.ajax(settings).done(function (response) {
+				for (i = 0; i < response.results.length; i++) {
+					if (response.results[i].iso_3166_1==="US"){
+						dictionary["mpaa_rating"]=response.results[i].iso_3166_1;
+					}
+
+				}
+
+				getDetails(dictionary);
 			});
 		}
 		main();
