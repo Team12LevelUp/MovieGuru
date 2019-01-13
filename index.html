@@ -13,6 +13,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -40,8 +41,14 @@
 			<div class="row">
 				<div class="col-md-4 col-sm-4 pink"> 
 				</div>
-				<div class="col-md-4 col-sm-4 pink">
-					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
+				<div class="input-group col-md-4 col-sm-4 pink">
+					<!-- Search bar -->
+					<input class="form-control py-2 border-right-0 border" type="search" value="search" id="search-input">
+            		<span class="input-group-append">
+                		<button class="icon btn btn-outline-secondary border-left-0 border" type="button">
+                    		<i class="fas fa-search-plus"></i>
+               			 </button>
+              		</span>
 				</div>
 				<div class="col-md-4 col-sm-4 pink">
 				</div>
