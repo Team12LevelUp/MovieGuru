@@ -178,19 +178,23 @@ $(document).ready(function (){
 				var numFields = 5;
 			
 				//Add the header row.
+
+				var posterWidth = window.innerWidth / (7) - 10;
+
 				var row = table.insertRow(-1);
 
 				var headerCell = document.createElement("TH");
 				headerCell.innerHTML = ""
 				headerCell.padding="0";
-				row.appendChild(headerCell)
+				headerCell.style.width=posterWidth;
 
-				var posterWidth = window.innerWidth / (7) - 10;
+				row.appendChild(headerCell)
 
 				for (var i = 0; i < movies.length; i++) {
 					var headerCell = document.createElement("TH");
 					headerCell.innerHTML = "";
 					headerCell.padding="0";
+					headerCell.style.width=posterWidth;
 
 					var img = document.createElement('img');
 					img.src = movies[i]["poster_url"];
