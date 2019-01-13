@@ -8,10 +8,11 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="movieApp.js"></script>
 		<!-- Bootstrap's js-->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-		<link rel="stylesheet" type="text/css" href="movieApp.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -35,21 +36,24 @@
 			<h1 class="display-4">Welcome to MovieGuru</h1>
 			<p class="lead">We help you decide on a movie to watch.</p>
 			<p class="lead">
-			<button type="button" class="btn btn-light">Let's Get Started</button>
+			<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 pink"> 
+				</div>
+				<div class="col-md-4 col-sm-4 pink">
+					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
+				</div>
+				<div class="col-md-4 col-sm-4 pink">
+				</div>
+			</div>
+			</div>
 			</p>
 			</div>
 		</div>
 
+
 		<!-- Main Form -->
-		<p></p>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-4 pink">
-					<!-- Search form -->
-					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
-				</div>
-			</div>
-		</div>
+		<p id="mainform"></p>
 		<div>
 			<div>
 				<input type="button" value="Generate Table" onclick="GenerateMovieTable()" />
@@ -91,6 +95,27 @@
 
 					movies.push(movie);
 
+					var movie = {};
+
+					movie["title"] = "Zootopia";
+					movie["director"] = "Byron Howard, Rich Moore, Jared Bush"
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BOTMyMjEyNzIzMV5BMl5BanBnXkFtZTgwNzIyNjU0NzE@._V1_SY1000_SX675_AL_.jpg";
+					movie["userRating"] = "8.0";
+					movie["criticRating"] = "78";
+
+					movies.push(movie);
+
+					var movie = {};
+
+					movie["title"] = "Vice";
+					movie["director"] = "Adam McKay"
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BMTY1NjM0MzgxMV5BMl5BanBnXkFtZTgwNDc4NTY0NjM@._V1_SY1000_CR0,0,640,1000_AL_.jpg";
+					movie["userRating"] = "7.1";
+					movie["criticRating"] = "61";
+
+					movies.push(movie);
+
+
 					return movies;
 				}
 
@@ -120,7 +145,9 @@
 
 						var img = document.createElement('img');
 						img.src = movies[i]["posterLink"];
-						img.width = "250"
+						img.width="260";
+						img.height="450";
+						
 						headerCell.appendChild(img);
 
 						row.appendChild(headerCell)
@@ -156,7 +183,7 @@
 
 					row = table.insertRow(-1);
 					var cell = row.insertCell(-1);
-					cell.innerHTML = "MetaCritic Score"
+					cell.innerHTML = "Metascore"
 
 					for (var i = 0; i < movies.length; i++) {
 						var cell = row.insertCell(-1);
@@ -171,5 +198,7 @@
 				</script>
 			</div>
 		</div>
+		
+		
 	</body>
 </html>
