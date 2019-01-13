@@ -1,6 +1,10 @@
 #maincontent{
 	text-align: center;
 	padding-top: 25%;
+	background: url(https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2378&q=80) black;
+	background-size: cover; 
+	background-repeat: no-repeat;
+	padding-bottom: 25%;
 }
 
 #paragraph{
@@ -12,8 +16,7 @@
 				 0px 15px 20px rgba(0,0,0,0.1);;
 }
 
-body{
-	background: url(https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2378&q=80) black;
-	background-size: cover; 
-	background-repeat: no-repeat;
+.poster img {
+	max-width:  100%;
+	max-height: 100%;
 }
