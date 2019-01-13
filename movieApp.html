@@ -48,32 +48,8 @@
 					<!-- Search form -->
 					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
 				</div>
-				<div class="col-md-4 col-sm-4 pink">
-					<!-- Search form -->
-					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
-				</div>
-				<div class="col-md-4 col-sm-4 pink">
-					<!-- Search form -->
-					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
-				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-4 col-sm-4 pink">
-					<div class="poster">
-						<img src="https://images.unsplash.com/photo-1490971588422-52f6262a237a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80">
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 pink">
-					<div class="poster">
-						<img src="https://images.unsplash.com/photo-1490971588422-52f6262a237a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80">
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 pink">
-					<div class="poster">
-						<img src="https://images.unsplash.com/photo-1490971588422-52f6262a237a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80">
-					</div>
-				</div>
-			</div>
+		</div>
 		<div>
 			<div>
 				<input type="button" value="Generate Table" onclick="GenerateMovieTable()" />
@@ -127,6 +103,7 @@
 
 					//Create a HTML Table element.
 					var table = document.createElement("TABLE");
+					table.className = "table table-striped";
 				
 					var numFields = 5;
 				
@@ -139,7 +116,7 @@
 
 					for (var i = 0; i < movies.length; i++) {
 						var headerCell = document.createElement("TH");
-						headerCell.innerHTML = movies[i]["title"]
+						headerCell.innerHTML = ""
 
 						var img = document.createElement('img');
 						img.src = movies[i]["posterLink"];
@@ -150,6 +127,15 @@
 					}
 
 					//Add the data rows.
+					row = table.insertRow(-1);
+					var cell = row.insertCell(-1);
+					cell.innerHTML = "Title"
+
+					for (var i = 0; i < movies.length; i++) {
+						var cell = row.insertCell(-1);
+						cell.innerHTML = movies[i]["title"]
+					}
+
 					row = table.insertRow(-1);
 					var cell = row.insertCell(-1);
 					cell.innerHTML = "Director"
