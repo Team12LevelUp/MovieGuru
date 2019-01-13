@@ -10,10 +10,10 @@
 </head>
 <body>
 	<script>
-		function get_dictionary(){
+		function get_movie_dictionary(query){
 			dictionary = {};
 
-			searchMovie(dictionary).then(function() {
+			searchMovie(dictionary, query).then(function() {
 				getDetails(dictionary);
 			}).then(function () {
 				getCredits(dictionary);
@@ -26,12 +26,12 @@
 			return dictionary;
 		}
 
-		function searchMovie(dictionary){
+		function searchMovie(dictionary, query){
 			var deferred = $.Deferred();
 			var settings = {
 				"async": true,
-				"crossDomain": true, //TODO: use variable string
-				"url": "https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query=interstellar&language=en-US&api_key=07a7c9c75d334aae16ed5f47c759aa7e",
+				"crossDomain": true,
+				"url": "https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query="+query+"&language=en-US&api_key=07a7c9c75d334aae16ed5f47c759aa7e",
 				"method": "GET",
 				"headers": {},
 				"data": "{}"
@@ -166,7 +166,7 @@
 
 		//This is what Will and Hailan use to get info. That is where the log lines are.
 		//The setTimeout is absolutely needed!
-		dictionary = get_dictionary();
+		dictionary = get_movie_dictionary("interstellar");
 		setTimeout(function(){
 			console.log(dictionary['tag']);
 			console.log(dictionary);
