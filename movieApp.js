@@ -245,6 +245,19 @@ $(document).ready(function (){
 					cell.innerHTML = movies[i]["summary"];
 				}
 
+				row = table.insertRow(-1);
+				var cell = row.insertCell(-1);
+				cell.innerHTML = "Genre";
+
+				/*
+				for (var i = 0; i < movies.length; i++) {
+					setTimeout(function (){
+						var cell = row.insertCell(-1);
+						cell.innerHTML = movies[i]["genre"];
+					}, 2000);
+					
+				} */
+
 				var dvTable = document.getElementById("dvTable");
 				dvTable.innerHTML = "";
 				dvTable.appendChild(table);
