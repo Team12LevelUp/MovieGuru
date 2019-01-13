@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie</title>
+
+		<script
+		src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous"></script>
+</head>
+<body>
+	<script>
+		function main() {
+			searchmovie()
+		}
+		function searchmovie(){
+			var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query=interstellar&language=en-US&api_key=07a7c9c75d334aae16ed5f47c759aa7e",
+				"method": "GET",
+				"headers": {},
+				"data": "{}"
+			}
+
+			$.ajax(settings).done(function (response) {
+				console.log(response.results[0].id);
+
+			});
+		}
+		main()
+
+
+
+	</script>
+
+
+</body>
+</html>
