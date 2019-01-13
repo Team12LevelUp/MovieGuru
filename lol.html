@@ -11,24 +11,33 @@
 <body>
 	<script>
 		function main() {
-			searchmovie()
+			dictionary = {};
+			searchmovie(dictionary);
 		}
-		function searchmovie(){
+		function searchmovie(dictionary){
 			var settings = {
+
 				"async": true,
 				"crossDomain": true,
 				"url": "https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query=interstellar&language=en-US&api_key=07a7c9c75d334aae16ed5f47c759aa7e",
 				"method": "GET",
 				"headers": {},
 				"data": "{}"
-			}
+			};
 
 			$.ajax(settings).done(function (response) {
-				console.log(response.results[0].id);
 
+				dictionary["id"]=response.results[0].id;
+				dictionary["title"] = response.results[0].title;
+				dictionary["posterurl"] = "http://image.tmdb.org/t/p/w500/" + response.results[0].poster_path;
+				dictionary["language"] = response.results[0].original_language;
+				dictionary["rating"] = response.results[0].vote_average;
+				dictionary["releasedate"] = response.results[0].release_date;
+				dictionary["summary"] = response.results[0].overview;
+				console.log(dictionary);
 			});
 		}
-		main()
+		main();
 
 
 

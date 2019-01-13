@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="movieApp.js"></script>
 		<!-- Bootstrap's js-->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -36,15 +35,14 @@
 			<h1 class="display-4">Welcome to MovieGuru</h1>
 			<p class="lead">We help you decide on a movie to watch.</p>
 			<p class="lead">
-			<button id="start" type="button" class="btn btn-light">Let's Get Started</button>
+			<button type="button" class="btn btn-light">Let's Get Started</button>
 			</p>
 			</div>
 		</div>
 
-
 		<!-- Main Form -->
-		<p id="mainform"></p>
-		<div class="container, mainform">
+		<p></p>
+		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-sm-4 pink">
 					<!-- Search form -->
@@ -158,7 +156,7 @@
 
 					row = table.insertRow(-1);
 					var cell = row.insertCell(-1);
-					cell.innerHTML = "Metascore"
+					cell.innerHTML = "MetaCritic Score"
 
 					for (var i = 0; i < movies.length; i++) {
 						var cell = row.insertCell(-1);
@@ -173,7 +171,5 @@
 				</script>
 			</div>
 		</div>
-		
-		
 	</body>
 </html>
