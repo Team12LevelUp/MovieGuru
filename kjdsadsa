@@ -1,0 +1,50 @@
+movie["title"] = "Interstellar";
+					movie["director"] = "Christopher Nolan";
+					movie["posterLink"] = "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg";
+					movie["userRating"] = "8.6";
+					movie["criticRating"] = "74";
+
+					movies.push(movie);
+
+					var movie = {};
+
+					movie["title"] = "Annihilation";
+					movie["director"] = "Alex Garland";
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BMTk2Mjc2NzYxNl5BMl5BanBnXkFtZTgwMTA2OTA1NDM@._V1_SY1000_CR0,0,640,1000_AL_.jpg";
+					movie["userRating"] = "6.9";
+					movie["criticRating"] = "79";
+
+					movies.push(movie);
+
+					var movie = {};
+
+					movie["title"] = "Hereditary";
+					movie["director"] = "Ari Aster";
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BOTU5MDg3OGItZWQ1Ny00ZGVmLTg2YTUtMzBkYzQ1YWIwZjlhXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SY1000_SX675_AL_.jpg";
+					movie["userRating"] = "7.3";
+					movie["criticRating"] = "87";
+
+					movies.push(movie);
+
+					var movie = {};
+
+					movie["title"] = "Zootopia";
+					movie["director"] = "Byron Howard, Rich Moore, Jared Bush"
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BOTMyMjEyNzIzMV5BMl5BanBnXkFtZTgwNzIyNjU0NzE@._V1_SY1000_SX675_AL_.jpg";
+					movie["userRating"] = "8.0";
+					movie["criticRating"] = "78";
+
+					movies.push(movie);
+
+					var movie = {};
+
+					movie["title"] = "Vice";
+					movie["director"] = "Adam McKay"
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BMTY1NjM0MzgxMV5BMl5BanBnXkFtZTgwNDc4NTY0NjM@._V1_SY1000_CR0,0,640,1000_AL_.jpg";
+					movie["userRating"] = "7.1";
+					movie["criticRating"] = "61";
+
+					movies.push(movie);
+
+
+                    					
