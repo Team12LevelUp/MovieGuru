@@ -1,3 +1,13 @@
+#div1, #div2, #div3, #div4, #div5{
+	font-size: 18px;
+
+}
+
+.col-sm-5th{
+    width: 20%;
+    float: left;
+}
+ 
 .form-control:focus {
     outline: 0 !important;
     border-color: initial;

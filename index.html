@@ -43,7 +43,7 @@
 				</div>
 				<div class="input-group col-md-4 col-sm-4 pink">
 					<!-- Search bar -->
-					<input class="form-control py-2 border-right-0 border" type="search" value="search" id="search-input">
+					<input class="form-control py-2 border-right-0 border" type="search" placeholder="Search a movie" id="search-input" onclick="ShowMovieNumber()">
             		<span class="input-group-append">
                 		<button class="icon btn btn-outline-secondary border-left-0 border" type="button">
                     		<i class="fas fa-search-plus"></i>
@@ -52,6 +52,14 @@
 				</div>
 				<div class="col-md-4 col-sm-4 pink">
 				</div>
+			</div>
+			<p></p>
+			<div class="row">
+				<div id="div1" class="col-sm-5th blue">Movie 1 Selected</div>
+				<div id="div2" class="col-sm-5th blue">Movie 2 Selected</div>
+				<div id="div3" class="col-sm-5th blue">Movie 3 Selected</div>
+				<div id="div4" class="col-sm-5th blue">Movie 4 Selected</div>
+				<div id="div5" class="col-sm-5th blue">Movie 5 Selected</div>
 			</div>
 			</div>
 			</p>
@@ -63,7 +71,7 @@
 		<p id="mainform"></p>
 		<div>
 			<div>
-				<input type="button" value="Generate Table" onclick="GenerateMovieTable()" />
+				<input type="button" id="tablebtn" class="btn btn-light" value="Generate Table" onclick="GenerateMovieTable()" />
 				<hr/>
 				<div id="dvTable">
 			</div>
