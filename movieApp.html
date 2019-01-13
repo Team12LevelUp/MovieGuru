@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movie</title>
+
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+		<!-- Bootstrap's js-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" type="text/css" href="movieApp.css">
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">MovieGuru</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link" href="#">Let's Do This</a>
+				<a class="nav-item nav-link" href="#">About</a> <!--Needs an About Page-->
+				<a class="nav-item nav-link" href="#">Contact</a> <!--Needs a Contact Page-->
+			</div>
+			
+		</nav>
+
+		<!-- Main Body -->
+		<div id="maincontent">
+			<div id="paragraph">
+			<h1 class="display-4">Welcome to MovieGuru</h1>
+			<p class="lead">We help you decide on a movie to watch.</p>
+			<p class="lead">
+			<button type="button" class="btn btn-light">Let's Get Started</button>
+			</p>
+			</div>
+		</div>
+
+		<!-- Main Form -->
+		<p></p>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 pink">
+					<!-- Search form -->
+					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div>
+				<input type="button" value="Generate Table" onclick="GenerateMovieTable()" />
+				<hr/>
+				<div id="dvTable">
+			</div>
+			<script type="text/javascript">
+
+				function addMovies() {
+					var movies = new Array();
+
+					var movie = {};
+
+					movie["title"] = "Interstellar";
+					movie["director"] = "Christopher Nolan";
+					movie["posterLink"] = "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg";
+					movie["userRating"] = "8.6";
+					movie["criticRating"] = "74";
+
+					movies.push(movie);
+
+					var movie = {};
+
+					movie["title"] = "Annihilation";
+					movie["director"] = "Alex Garland";
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BMTk2Mjc2NzYxNl5BMl5BanBnXkFtZTgwMTA2OTA1NDM@._V1_SY1000_CR0,0,640,1000_AL_.jpg";
+					movie["userRating"] = "6.9";
+					movie["criticRating"] = "79";
+
+					movies.push(movie);
+
+					var movie = {};
+
+					movie["title"] = "Hereditary";
+					movie["director"] = "Ari Aster";
+					movie["posterLink"] = "https://m.media-amazon.com/images/M/MV5BOTU5MDg3OGItZWQ1Ny00ZGVmLTg2YTUtMzBkYzQ1YWIwZjlhXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SY1000_SX675_AL_.jpg";
+					movie["userRating"] = "7.3";
+					movie["criticRating"] = "87";
+
+					movies.push(movie);
+
+					return movies;
+				}
+
+
+				function GenerateMovieTable() {
+
+					var movies = addMovies();
+
+					console.log(movies);
+
+					//Create a HTML Table element.
+					var table = document.createElement("TABLE");
+					table.className = "table table-striped";
+				
+					var numFields = 5;
+				
+					//Add the header row.
+					var row = table.insertRow(-1);
+
+					var headerCell = document.createElement("TH");
+					headerCell.innerHTML = ""
+					row.appendChild(headerCell)
+
+					for (var i = 0; i < movies.length; i++) {
+						var headerCell = document.createElement("TH");
+						headerCell.innerHTML = ""
+
+						var img = document.createElement('img');
+						img.src = movies[i]["posterLink"];
+						img.width = "250"
+						headerCell.appendChild(img);
+
+						row.appendChild(headerCell)
+					}
+
+					//Add the data rows.
+					row = table.insertRow(-1);
+					var cell = row.insertCell(-1);
+					cell.innerHTML = "Title"
+
+					for (var i = 0; i < movies.length; i++) {
+						var cell = row.insertCell(-1);
+						cell.innerHTML = movies[i]["title"]
+					}
+
+					row = table.insertRow(-1);
+					var cell = row.insertCell(-1);
+					cell.innerHTML = "Director"
+
+					for (var i = 0; i < movies.length; i++) {
+						var cell = row.insertCell(-1);
+						cell.innerHTML = movies[i]["director"]
+					}
+
+					row = table.insertRow(-1);
+					var cell = row.insertCell(-1);
+					cell.innerHTML = "User Rating"
+
+					for (var i = 0; i < movies.length; i++) {
+						var cell = row.insertCell(-1);
+						cell.innerHTML = movies[i]["userRating"]
+					}
+
+					row = table.insertRow(-1);
+					var cell = row.insertCell(-1);
+					cell.innerHTML = "Metascore"
+
+					for (var i = 0; i < movies.length; i++) {
+						var cell = row.insertCell(-1);
+						cell.innerHTML = movies[i]["criticRating"]
+					}
+
+					var dvTable = document.getElementById("dvTable");
+					dvTable.innerHTML = "";
+					dvTable.appendChild(table);
+
+				}
+				</script>
+			</div>
+		</div>
+	</body>
+</html>
