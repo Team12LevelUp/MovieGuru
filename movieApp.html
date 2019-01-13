@@ -36,7 +36,17 @@
 			<h1 class="display-4">Welcome to MovieGuru</h1>
 			<p class="lead">We help you decide on a movie to watch.</p>
 			<p class="lead">
-			<button id="start" type="button" class="btn btn-light">Let's Get Started</button>
+			<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 pink"> 
+				</div>
+				<div class="col-md-4 col-sm-4 pink">
+					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
+				</div>
+				<div class="col-md-4 col-sm-4 pink">
+				</div>
+			</div>
+			</div>
 			</p>
 			</div>
 		</div>
@@ -44,14 +54,6 @@
 
 		<!-- Main Form -->
 		<p id="mainform"></p>
-		<div class="container, mainform">
-			<div class="row">
-				<div class="col-md-4 col-sm-4 pink">
-					<!-- Search form -->
-					<div class="active-purple-3 active-purple-4 mb-4"> <input class="form-control" type="text" placeholder="Search a Movie"></div>
-				</div>
-			</div>
-		</div>
 		<div>
 			<div>
 				<input type="button" value="Generate Table" onclick="GenerateMovieTable()" />
