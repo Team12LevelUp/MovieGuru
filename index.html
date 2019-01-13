@@ -139,14 +139,16 @@
 					headerCell.innerHTML = ""
 					row.appendChild(headerCell)
 
+					var posterWidth = window.innerWidth/6;
+
 					for (var i = 0; i < movies.length; i++) {
 						var headerCell = document.createElement("TH");
 						headerCell.innerHTML = ""
 
 						var img = document.createElement('img');
 						img.src = movies[i]["posterLink"];
-						img.width="260";
-						img.height="450";
+						img.width= posterWidth;
+						img.height=posterWidth*1.5;
 						
 						headerCell.appendChild(img);
 
