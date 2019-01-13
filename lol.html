@@ -10,17 +10,27 @@
 </head>
 <body>
 	<script>
-		function main() {
+		function get_dictionary(){
 			dictionary = {};
-			searchmovie(dictionary);
 
+			searchMovie(dictionary).then(function() {
+				getDetails(dictionary);
+			}).then(function () {
+				getCredits(dictionary);
+			}).then(function () {
+				getRelease(dictionary);
+			}).then(function () {
+				getKeywords(dictionary);
+			});
 
+			return dictionary;
 		}
-		function searchmovie(dictionary){
-			var settings = {
 
+		function searchMovie(dictionary){
+			var deferred = $.Deferred();
+			var settings = {
 				"async": true,
-				"crossDomain": true,
+				"crossDomain": true, //TODO: use variable string
 				"url": "https://api.themoviedb.org/3/search/movie?include_adult=false&page=1&query=interstellar&language=en-US&api_key=07a7c9c75d334aae16ed5f47c759aa7e",
 				"method": "GET",
 				"headers": {},
@@ -36,14 +46,13 @@
 				dictionary["rating"] = response.results[0].vote_average;
 				dictionary["release_date"] = response.results[0].release_date;
 				dictionary["summary"] = response.results[0].overview;
-
-				getKeywords(dictionary)
-
-
+				//return deferred.resolve();
 			});
+			return deferred.resolve();
 		}
-		function getKeywords(dictionary){
 
+		function getKeywords(dictionary){
+			var deferred = $.Deferred();
 			var settings = {
 				"async": true,
 				"crossDomain": true,
@@ -55,19 +64,16 @@
 
 			$.ajax(settings).done(function (response) {
 
-				dictionary["tags"] = [];
+				dictionary["tag"] = [];
 				for (i = 0; i < response.keywords.length; i++) {
-					dictionary["tags"].push(response.keywords[i].name);
+					dictionary["tag"].push(response.keywords[i].name);
 				}
-
-
-				getrelease(dictionary);
 			});
+			return deferred.resolve();
 		}
-		function getrelease(dictionary){
 
-
-
+		function getRelease(dictionary) {
+			var deferred = $.Deferred();
 			var settings = {
 				"async": true,
 				"crossDomain": true,
@@ -75,25 +81,97 @@
 				"method": "GET",
 				"headers": {},
 				"data": "{}"
-				}
+			}
 
 			$.ajax(settings).done(function (response) {
 				for (i = 0; i < response.results.length; i++) {
-					if (response.results[i].iso_3166_1==="US"){
-						dictionary["mpaa_rating"]=response.results[i].iso_3166_1;
+					if (response.results[i].iso_3166_1 === "US") {
+						dictionary["mpaa_rating"] = response.results[i].release_dates[0].certification;
 					}
 
 				}
-
-				getDetails(dictionary);
 			});
+			return deferred.resolve();
 		}
-		main();
 
+		function getDetails(dictionary){
+			var deferred = $.Deferred();
+			var settings = {
 
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.themoviedb.org/3/movie/"+dictionary['id']+"?language=en-US&api_key=07a7c9c75d334aae16ed5f47c759aa7e",
+				"method": "GET",
+				"headers": {},
+				"data": "{}"
+			};
+
+			var i;
+
+			$.ajax(settings).done(function (response) {
+
+				dictionary["genre"] = [];
+				for (i = 0; i < response.genres.length; i++) {
+					dictionary["genre"].push(response.genres[i].name);
+				}
+				dictionary['budget'] = response.budget;
+				dictionary['imdb_id'] = response.imdb_id;
+
+				dictionary["production_companies"] = [];
+				for (i = 0; i < response.production_companies.length; i++) {
+					dictionary["production_companies"].push(response.production_companies[i].name);
+				}
+
+				dictionary['homepage'] = response.homepage;
+				dictionary['box_office'] = response.revenue;
+				dictionary['runtime'] = response.runtime;
+				return deferred.resolve();
+			});
+
+		}
+
+		function getCredits(dictionary){
+			var deferred = $.Deferred();
+			var settings = {
+				"async": true,
+				"crossDomain": true,
+				"url": "https://api.themoviedb.org/3/movie/"+dictionary['id']+"/credits?api_key=07a7c9c75d334aae16ed5f47c759aa7e",
+				"method": "GET",
+				"headers": {},
+				"data": "{}"
+			};
+			var i, max;
+
+			$.ajax(settings).done(function (response) {
+				if (response.cast.length < 5){
+					max = response.cast.length
+				} else {
+					max = 5
+				}
+
+				dictionary['actor'] = [];
+				for (i=0; i < max; i++){
+					dictionary['actor'].push(response.cast[i].name);
+				}
+
+				for(i=0; i < response.crew.length; i++) {
+					if (response.crew[i].job === "Director") {
+						dictionary['director'] = response.crew[i].name;
+					}
+				}
+				return deferred.resolve();
+			});
+
+		}
+
+		//This is what Will and Hailan use to get info. That is where the log lines are.
+		//The setTimeout is absolutely needed!
+		dictionary = get_dictionary();
+		setTimeout(function(){
+			console.log(dictionary['tag']);
+			console.log(dictionary);
+		}, 1000);
 
 	</script>
-
-
 </body>
 </html>
