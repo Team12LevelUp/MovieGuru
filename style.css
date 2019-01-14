@@ -1,3 +1,12 @@
+.page-footer{
+	background-color: #3c3d41;
+	color: white;
+}
+
+.page-footer a{
+	color: white;
+}
+
 #div1, #div2, #div3, #div4, #div5{
 	font-size: 18px;
 }
